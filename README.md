@@ -32,3 +32,13 @@ def preprocess_message(message):
     stop_words = set(stopwords.words('english'))
     
     return ' '.join([lemmatizer.lemmatize(word) for word in tokens if word not in stop_words])
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('chat.csv')
+user_message_counts = df['sender'].value_counts()
+
+user_message_counts.plot(kind='bar')
+plt.title('Top Contributors')
+plt.show()
